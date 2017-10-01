@@ -86,7 +86,7 @@ class AddressTest extends AbstractTestCase
             $script = ScriptFactory::scriptPubKey()->payToPubKeyHash($obj->getHash());
         } else if ($type === 'script') {
             $p2shScript = ScriptFactory::fromHex($data);
-            $obj = AddressFactory::fromScript($p2shScript);
+            $obj = AddressFactory::p2sh($p2shScript);
             $script = ScriptFactory::scriptPubKey()->payToScriptHash($obj->getHash());
         } else if ($type === 'witness') {
             $script = ScriptFactory::fromHex($data);

@@ -34,7 +34,7 @@ class OutputScriptFactoryTest extends AbstractTestCase
         $this->assertEquals(Opcodes::OP_CHECKSIG, $parsedScript[4]->getOp());
         $this->assertEquals(ScriptType::P2PKH, $classifier->classify($p2pkhScript));
 
-        $p2sh = AddressFactory::fromScript(ScriptFactory::scriptPubKey()->multisig(1, [$publicKey]));
+        $p2sh = AddressFactory::p2sh(ScriptFactory::scriptPubKey()->multisig(1, [$publicKey]));
         $p2shScript = ScriptFactory::scriptPubKey()->payToAddress($p2sh);
         $parsedScript = $p2shScript->getScriptParser()->decode();
         $this->assertEquals(Opcodes::OP_HASH160, $parsedScript[0]->getOp());
